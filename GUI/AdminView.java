@@ -2,6 +2,8 @@ package GUI;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Color;
+import java.awt.Component;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -76,11 +78,13 @@ public class AdminView extends JPanel implements ActionListener, ListSelectionLi
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 
 		// newStuff
+		
 		gbc.gridx = 0;
-		gbc.gridy = 0;
+		gbc.gridy = 1;
 		subGroup3.add(displayArea, gbc);
 
 		assignButton = new JButton("Produce List");
+		assignButton.setBackground(Color.CYAN);
 		assignButton.setActionCommand("Save");
 		assignButton.addActionListener(this);
 		gbc.gridy=1;
@@ -98,20 +102,26 @@ public class AdminView extends JPanel implements ActionListener, ListSelectionLi
 		subGroup2.add(availableTeachers, gbc);
 
 		assignButton = new JButton("Assign to course");
+		assignButton.setBackground(Color.CYAN);
 		assignButton.setActionCommand("Assign");
 		assignButton.addActionListener(this);
+		gbc.gridx = 0;
 		gbc.gridy = 1;
 		subGroup2.add(assignButton, gbc);
 		this.add(subGroup1);
 		this.add(subGroup2);
 		this.add(subGroup3);
+		
 
 		returnButton = new JButton("Back to main");
+		returnButton.setBackground(Color.LIGHT_GRAY);
 		returnButton.setActionCommand("Return");
 		returnButton.addActionListener(a);
 
 		this.add(returnButton);
-
+		this.setAlignmentY(Component.TOP_ALIGNMENT);
+		this.setBackground(new Color(190, 239, 252));
+		
 	}
 
 	public void actionPerformed(ActionEvent e) {

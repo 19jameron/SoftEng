@@ -2,7 +2,6 @@ package GUI;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
@@ -17,6 +16,7 @@ import DataUnits.Data;
 import DataUnits.TimeSlot;
 import DataUnits.Training;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionListener;
@@ -73,33 +73,43 @@ public class DirectorView extends JPanel implements ActionListener, ListSelectio
 		subGroup2 = new JPanel();
 		subGroup3 = new JPanel();
 		subGroup1.setLayout(new GridBagLayout());
+		
+	
+		
+		
 		subGroup2.setLayout(new GridBagLayout());
 		subGroup3.setLayout(new GridBagLayout());
 		gbc.fill = GridBagConstraints.HORIZONTAL;
-
+		gbc.anchor = GridBagConstraints.NORTH;
 	
+
+		
 		
 
 		gbc.gridy = 2;
 		saveCourseButton = new JButton("Save List");
+		saveCourseButton.setBackground(Color.CYAN);
 		saveCourseButton.setActionCommand("SaveCourse");
 		saveCourseButton.addActionListener(this);
 		subGroup1.add(saveCourseButton, gbc);
 		addTrainingButton = new JButton("Add Training to Course");
+		addTrainingButton.setBackground(Color.CYAN);
 		addTrainingButton.setActionCommand("AddTraining");
 		addTrainingButton.addActionListener(this);
 		subGroup2.add(addTrainingButton, gbc);
 
 		returnButton = new JButton("Back to main");
-		returnButton.setBackground(Color.RED);
+		returnButton.setBackground(Color.lightGray);
 		returnButton.setActionCommand("Return");
 		returnButton.addActionListener(a);
 
 		dayPicker = new JComboBox<String>(day);
+		dayPicker.setBackground(new Color(204, 255, 255));
 		timePicker = new JComboBox<String>(time);
+		timePicker.setBackground(new Color(204, 255, 255));
 
 		addTimeButton = new JButton("Add timeslot");
-		addTimeButton.setBackground(Color.blue);
+		addTimeButton.setBackground(Color.CYAN);
 		addTimeButton.setActionCommand("AddTime");
 		addTimeButton.addActionListener(this);
 		gbc.gridy=0;
@@ -111,7 +121,7 @@ public class DirectorView extends JPanel implements ActionListener, ListSelectio
 		gbc.gridx=0;
 		gbc.gridy=2;
 		subGroup3.add(addTimeButton,gbc);
-
+	
 
 		gbc.gridy = 1;
 		courseList = new JList<>();
@@ -128,7 +138,7 @@ public class DirectorView extends JPanel implements ActionListener, ListSelectio
 		this.add(subGroup1);
 		this.add(subGroup2);
 		this.add(subGroup3);
-
+		this.setBackground(new Color(190, 239, 252));
 		this.add(returnButton);
 
 	}

@@ -5,17 +5,27 @@ import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.GridLayout;
+
 
 public class InitialView extends JPanel implements ActionListener{
     JButton[] btns;
     JButton select;
     JFileChooser j;
     GUI parent;
+    GridLayout initGrid = new GridLayout(0,3);
     public InitialView(GUI e)
     {
-
         super();
+        JPanel initPanel = new JPanel();
+        initPanel.setLayout(initGrid);
+        
+        
         parent = e;
+        select = new JButton("Select Data Directory");
+        select.setActionCommand("Select");
+        select.addActionListener(this);
+        this.add(select);
         btns = new JButton[2];
         String[] texts = {"Director","Admin"};
         for(int i =0;i<2;i++)
@@ -25,10 +35,7 @@ public class InitialView extends JPanel implements ActionListener{
             btns[i].addActionListener(e);
             this.add(btns[i]);
         }
-        select = new JButton("Select Data Directory");
-        select.setActionCommand("Select");
-        select.addActionListener(this);
-        this.add(select);
+        
     }
     public void actionPerformed(ActionEvent e) {
         if(e.getActionCommand().equals("Select"))
