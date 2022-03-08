@@ -7,6 +7,7 @@ import java.awt.Insets;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -67,10 +68,6 @@ public class DirectorView extends JPanel implements ActionListener, ListSelectio
 		this.controller = controller;
 		this.setLayout(new GridBagLayout());
 
-
-		displayArea = new JTextArea();
-		displayArea.setPreferredSize(new Dimension(200, 200));
-
 		gbc = new GridBagConstraints();
 		gbc.insets = new Insets(3,3,3,3);
 		gbc.anchor = GridBagConstraints.NORTH;
@@ -82,14 +79,21 @@ public class DirectorView extends JPanel implements ActionListener, ListSelectio
 		subGroup3.setLayout(new GridBagLayout());
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 
-	
+		displayArea = new JTextArea();
+		displayArea.setPreferredSize(new Dimension(200, 200));
+		gbc.gridy=1;
+		subGroup3.add(displayArea,gbc);
 		
 
 		gbc.gridy = 2;
 		saveCourseButton = new JButton("Save List");
 		saveCourseButton.setActionCommand("SaveCourse");
 		saveCourseButton.addActionListener(this);
-		subGroup1.add(saveCourseButton, gbc);
+		gbc.gridx=3;
+		this.add(saveCourseButton, gbc);
+		gbc.gridx=0;
+
+
 		addTrainingButton = new JButton("Add Training to Course");
 		addTrainingButton.setActionCommand("AddTraining");
 		addTrainingButton.addActionListener(this);
@@ -102,32 +106,40 @@ public class DirectorView extends JPanel implements ActionListener, ListSelectio
 		addTimeButton.setBackground(Color.blue);
 		addTimeButton.setActionCommand("AddTime");
 		addTimeButton.addActionListener(this);
-		gbc.gridy=0;
-		subGroup3.add(displayArea,gbc);
-		gbc.gridy=1;
+		gbc.gridy=2;
 		subGroup3.add(dayPicker,gbc);
-		gbc.gridx=1;
+		gbc.gridx=2;
 		subGroup3.add(timePicker,gbc);
 		gbc.gridx=0;
-		gbc.gridy=2;
+		gbc.gridy=3;
 		subGroup3.add(addTimeButton,gbc);
 
+		JLabel label3 = new JLabel("Course details");
+		gbc.gridy=0;
+		subGroup3.add(label3, gbc);
 
 		gbc.gridy = 1;
 		courseList = new JList<>();
 		courseList.setPreferredSize(new Dimension(200, 200));
 		courseList.addListSelectionListener(this);
 		subGroup1.add(courseList, gbc);
+		JLabel label1 = new JLabel("Select course");
+		gbc.gridy=0;
+		subGroup1.add(label1, gbc);
 
+		gbc.gridy=1;
 		trainingList = new JList<>();
 		trainingList.setPreferredSize(new Dimension(200, 200));
 		subGroup2.add(trainingList, gbc);
-
-
+		JLabel label2 = new JLabel("Select training");
+		gbc.gridy=0;
+		subGroup2.add(label2, gbc);
 
 		gbc.gridy=0;
 		gbc.gridx=0;
 		this.add(subGroup1, gbc);
+		
+		
 		gbc.gridx=1;
 		this.add(subGroup2, gbc);
 		gbc.gridx=2;

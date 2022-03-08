@@ -29,7 +29,7 @@ public class InitialView extends JPanel implements ActionListener{
         parent = e;
         JLabel label = new JLabel("<html><ol>" +
             "<li>Please select the directory with all data. (Data folder)</li>"+
-            "<li>Select the view for the appropriate user:</li>" +             
+            "<li>Select the view for the appropriate user.</li>" +             
             "<li>Director View will allow you to add teaching requirements for the term.</li>" + 
             "<li>Admin View will allow you to assign Teachers to Trainings.</li>" + 
             "</ol><html>");
@@ -52,9 +52,9 @@ public class InitialView extends JPanel implements ActionListener{
         panel1.add(select, gbc);
 
 
-        btns = new JButton[2];
-        String[] texts = {"Director","Admin"};
-        for(int i =0;i<2;i++)
+        btns = new JButton[3];
+        String[] texts = {"Director","Admin", "Report"};
+        for(int i =0;i<3;i++)
         {
             btns[i] = new JButton(texts[i]);
             btns[i].setActionCommand(texts[i]);

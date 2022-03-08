@@ -14,6 +14,8 @@ import java.awt.Font;
 import Controllers.DirectorController;
 import Controllers.AdminController;
 import GUI.AdminView;
+import Controllers.ReportController;
+import GUI.ReportView;
 
 public class GUI extends JFrame implements ActionListener {
 	private String dataPath;
@@ -37,6 +39,12 @@ public class GUI extends JFrame implements ActionListener {
 
 	AdminView av;
 	AdminController ac;
+	
+
+	ReportView rv;
+	ReportController rc;
+
+
 	JPanel iv;
 
 	public GUI() {  
@@ -63,6 +71,12 @@ public class GUI extends JFrame implements ActionListener {
 		av = new AdminView(this, ac);
 		ac.setView(av);
 		cPane.add(av, "Admin");
+
+		rc = new ReportController();
+		rv = new ReportView(this, rc);
+		rc.setView(rv);
+		cPane.add(rv, "Report");
+
 		this.pack();
 		
 	}
@@ -83,6 +97,10 @@ public class GUI extends JFrame implements ActionListener {
 			 	break;
 			case "Return":
 				cardLayout.show(cPane, "Test1");
+				break;
+			case "Report":
+				setDataReport();
+				cardLayout.show(cPane, "Report");
 				break;
 
 		}
@@ -145,5 +163,9 @@ public class GUI extends JFrame implements ActionListener {
 		ac.setTeacherTrainingData(getPath(FileTypes.teacherTraining));
 		ac.populateCourse();
 		ac.populateTeachers();
+	}
+	public void setDataReport()
+	{
+		rc.recip(getPath(FileTypes.timetable), getPath(FileTypes.training_needed));
 	}
 }
