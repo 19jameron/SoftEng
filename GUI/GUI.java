@@ -44,7 +44,7 @@ public class GUI extends JFrame implements ActionListener {
 		cPane = getContentPane();    
 		cardLayout =new CardLayout(40,30);    
 		cPane.setLayout(cardLayout);
-		this.setSize(WIDTH, HEIGHT);
+		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		//set title
 		this.setTitle("GUI Table");
@@ -63,7 +63,7 @@ public class GUI extends JFrame implements ActionListener {
 		av = new AdminView(this, ac);
 		ac.setView(av);
 		cPane.add(av, "Admin");
-		
+		this.pack();
 		
 	}
 	public void showGUI() {

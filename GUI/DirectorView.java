@@ -2,6 +2,7 @@ package GUI;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -64,11 +65,15 @@ public class DirectorView extends JPanel implements ActionListener, ListSelectio
 	public DirectorView(GUI a, DirectorController controller) {
 		parent = a;
 		this.controller = controller;
+		this.setLayout(new GridBagLayout());
+
 
 		displayArea = new JTextArea();
 		displayArea.setPreferredSize(new Dimension(200, 200));
 
 		gbc = new GridBagConstraints();
+		gbc.insets = new Insets(3,3,3,3);
+		gbc.anchor = GridBagConstraints.NORTH;
 		subGroup1 = new JPanel();
 		subGroup2 = new JPanel();
 		subGroup3 = new JPanel();
@@ -89,11 +94,6 @@ public class DirectorView extends JPanel implements ActionListener, ListSelectio
 		addTrainingButton.setActionCommand("AddTraining");
 		addTrainingButton.addActionListener(this);
 		subGroup2.add(addTrainingButton, gbc);
-
-		returnButton = new JButton("Back to main");
-		returnButton.setBackground(Color.RED);
-		returnButton.setActionCommand("Return");
-		returnButton.addActionListener(a);
 
 		dayPicker = new JComboBox<String>(day);
 		timePicker = new JComboBox<String>(time);
@@ -125,11 +125,20 @@ public class DirectorView extends JPanel implements ActionListener, ListSelectio
 
 
 
-		this.add(subGroup1);
-		this.add(subGroup2);
-		this.add(subGroup3);
+		gbc.gridy=0;
+		gbc.gridx=0;
+		this.add(subGroup1, gbc);
+		gbc.gridx=1;
+		this.add(subGroup2, gbc);
+		gbc.gridx=2;
+		this.add(subGroup3, gbc);
+		
 
-		this.add(returnButton);
+		returnButton = new JButton("Back to main");
+		returnButton.setActionCommand("Return");
+		returnButton.addActionListener(a);
+		gbc.gridx=3;
+		this.add(returnButton, gbc);
 
 	}
 

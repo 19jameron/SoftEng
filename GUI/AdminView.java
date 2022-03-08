@@ -2,7 +2,8 @@ package GUI;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-
+import java.awt.Insets;
+import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
@@ -62,10 +63,13 @@ public class AdminView extends JPanel implements ActionListener, ListSelectionLi
 	public AdminView(GUI a, AdminController controller) {
 		parent = a;
 		this.controller = controller;
+		this.setLayout(new GridBagLayout());
 		displayArea = new JTextArea();
 		displayArea.setPreferredSize(new Dimension(200, 200));
 
 		gbc = new GridBagConstraints();
+		gbc.insets = new Insets(3,3,3,3);
+		gbc.anchor = GridBagConstraints.NORTH;
 		subGroup1 = new JPanel();
 		subGroup2 = new JPanel();
 		subGroup3 = new JPanel();
@@ -79,11 +83,11 @@ public class AdminView extends JPanel implements ActionListener, ListSelectionLi
 		gbc.gridy = 0;
 		subGroup3.add(displayArea, gbc);
 
-		assignButton = new JButton("Produce List");
-		assignButton.setActionCommand("Save");
-		assignButton.addActionListener(this);
+		saveButton = new JButton("Produce List");
+		saveButton.setActionCommand("Save");
+		saveButton.addActionListener(this);
 		gbc.gridy=1;
-		subGroup1.add(assignButton, gbc);
+		subGroup1.add(saveButton, gbc);
 		gbc.gridy=0;
 
 		slotsToFill = new JList<CourseTime>();
@@ -101,15 +105,21 @@ public class AdminView extends JPanel implements ActionListener, ListSelectionLi
 		assignButton.addActionListener(this);
 		gbc.gridy = 1;
 		subGroup2.add(assignButton, gbc);
-		this.add(subGroup1);
-		this.add(subGroup2);
-		this.add(subGroup3);
+
+		gbc.gridy=0;
+		gbc.gridx=0;
+		this.add(subGroup1, gbc);
+		gbc.gridx=1;
+		this.add(subGroup2, gbc);
+		gbc.gridx=2;
+		this.add(subGroup3, gbc);
+		
 
 		returnButton = new JButton("Back to main");
 		returnButton.setActionCommand("Return");
 		returnButton.addActionListener(a);
-
-		this.add(returnButton);
+		gbc.gridx=3;
+		this.add(returnButton, gbc);
 
 	}
 
